@@ -11,20 +11,36 @@ export class StringCalculator {
     let nums = [];
     
     if (numbers.startsWith("//")) {
-      let delimiter, numbersPart;
+      let delimiters = [], numbersPart;
       
       if (numbers.startsWith("//[")) {
-        // Handle delimiters of any length: //[delimiter]\n
-        const endBracket = numbers.indexOf("]");
-        delimiter = numbers.substring(3, endBracket);
-        numbersPart = numbers.substring(endBracket + 2);
+        // Handle multiple delimiters: //[delim1][delim2]\n
+        const endOfDelimiters = numbers.lastIndexOf("]");
+        const delimiterSection = numbers.substring(2, endOfDelimiters + 1);
+        numbersPart = numbers.substring(endOfDelimiters + 2);
+        
+        // Extract all delimiters from [delim1][delim2] format
+        const delimiterRegex = /\[([^\]]+)\]/g;
+        let match;
+        while ((match = delimiterRegex.exec(delimiterSection)) !== null) {
+          delimiters.push(match[1]);
+        }
       } else {
         // Handle single character delimiter: //;\n
-        delimiter = numbers[2];
+        delimiters = [numbers[2]];
         numbersPart = numbers.substring(4);
       }
       
-      nums = numbersPart.split(delimiter);
+      // Split by all delimiters
+      let splitResult = [numbersPart];
+      for (const delimiter of delimiters) {
+        const newSplit = [];
+        for (const part of splitResult) {
+          newSplit.push(...part.split(delimiter));
+        }
+        splitResult = newSplit;
+      }
+      nums = splitResult;
     } else if (numbers.includes(",") || numbers.includes("\n")) {
       nums = numbers.split(/[,\n]/);
     } else {
