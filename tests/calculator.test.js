@@ -11,3 +11,7 @@ test("returns the number for single number", () => {
 test("returns sum for two numbers", () => {
   expect(Add("1,2")).toBe(3);
 });
+
+test("returns sum for unknown amount of numbers", () => {
+  expect(Add("1,2,3,4,5")).toBe(15);
+});
