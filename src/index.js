@@ -10,6 +10,7 @@ export function runInteractiveCLI() {
   console.log("  //;\\n1;2;3 → 6");
   console.log("  //[***]\\n1***2***3 → 6");
   console.log("  //[*][%]\\n1*2%3 → 6");
+  console.log("  //[***][%%]\\n1***2%%3 → 6");
   console.log("");
 
   const rl = readline.createInterface({
