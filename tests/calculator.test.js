@@ -27,3 +27,14 @@ test("supports custom delimiter", () => {
 test("throws exception for negative numbers", () => {
   expect(() => Add("1,-2,3")).toThrow("negatives not allowed: -2");
 });
+
+test("tracks how many times Add was called", () => {
+  const calculator = new StringCalculator();
+  expect(calculator.GetCalledCount()).toBe(0);
+  
+  calculator.Add("1,2");
+  expect(calculator.GetCalledCount()).toBe(1);
+  
+  calculator.Add("3");
+  expect(calculator.GetCalledCount()).toBe(2);
+});
