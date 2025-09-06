@@ -11,8 +11,19 @@ export class StringCalculator {
     let nums = [];
     
     if (numbers.startsWith("//")) {
-      const delimiter = numbers[2];
-      const numbersPart = numbers.substring(4);
+      let delimiter, numbersPart;
+      
+      if (numbers.startsWith("//[")) {
+        // Handle delimiters of any length: //[delimiter]\n
+        const endBracket = numbers.indexOf("]");
+        delimiter = numbers.substring(3, endBracket);
+        numbersPart = numbers.substring(endBracket + 2);
+      } else {
+        // Handle single character delimiter: //;\n
+        delimiter = numbers[2];
+        numbersPart = numbers.substring(4);
+      }
+      
       nums = numbersPart.split(delimiter);
     } else if (numbers.includes(",") || numbers.includes("\n")) {
       nums = numbers.split(/[,\n]/);
