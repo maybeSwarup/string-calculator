@@ -46,11 +46,31 @@ npm install
 
 # Run tests
 npm test
+
+# Start interactive CLI
+npm start
 ```
 
 ## Usage
 
-### Basic Usage
+### Interactive CLI
+
+```bash
+# Start the interactive calculator
+npm start
+
+# Follow the prompts to enter numbers
+Enter numbers: 1,2,3
+Result: 6
+
+Enter numbers: //[*][%]\n1*2%3
+Result: 6
+
+Enter numbers: exit
+Goodbye!
+```
+
+### Programmatic Usage
 
 ```javascript
 import { Add, StringCalculator } from "./src/calculator.js";
@@ -99,9 +119,11 @@ Each feature was implemented incrementally with individual commits showing the T
 ```
 string-calculator/
 ├── src/
-│   └── calculator.js          # Main StringCalculator implementation
+│   ├── calculator.js          # Main StringCalculator implementation
+│   └── index.js              # Interactive CLI interface
 ├── tests/
-│   └── calculator.test.js     # Jest test suite
+│   ├── calculator.test.js     # Jest test suite for calculator
+│   └── index.test.js         # Jest test suite for CLI
 ├── package.json               # Node.js project configuration
 ├── jest.config.js            # Jest configuration for ES modules
 ├── .gitignore                # Git ignore patterns
