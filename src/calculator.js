@@ -25,7 +25,10 @@ export class StringCalculator {
       throw new Error(`negatives not allowed: ${negatives.join(", ")}`);
     }
     
-    return nums.reduce((sum, num) => sum + parseInt(num), 0);
+    return nums.reduce((sum, num) => {
+      const parsedNum = parseInt(num);
+      return parsedNum > 1000 ? sum : sum + parsedNum;
+    }, 0);
   }
 
   GetCalledCount() {
