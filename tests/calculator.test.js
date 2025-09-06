@@ -23,3 +23,7 @@ test("supports newline as delimiter", () => {
 test("supports custom delimiter", () => {
   expect(Add("//;\n1;2")).toBe(3);
 });
+
+test("throws exception for negative numbers", () => {
+  expect(() => Add("1,-2,3")).toThrow("negatives not allowed: -2");
+});
