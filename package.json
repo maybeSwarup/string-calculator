@@ -1,0 +1,16 @@
+{
+  "name": "string-calculator",
+  "version": "1.0.0",
+  "description": "String Calculator TDD Kata implementation for Incubyte assessment",
+  "main": "src/calculator.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "keywords": ["tdd", "kata", "calculator", "testing"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.1.3"
+  }
+}
