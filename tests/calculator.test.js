@@ -38,3 +38,7 @@ test("tracks how many times Add was called", () => {
   calculator.Add("3");
   expect(calculator.GetCalledCount()).toBe(2);
 });
+
+test("ignores numbers greater than 1000", () => {
+  expect(Add("2,1001")).toBe(2);
+});
