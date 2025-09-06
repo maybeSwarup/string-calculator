@@ -15,3 +15,7 @@ test("returns sum for two numbers", () => {
 test("returns sum for unknown amount of numbers", () => {
   expect(Add("1,2,3,4,5")).toBe(15);
 });
+
+test("supports newline as delimiter", () => {
+  expect(Add("1\n2,3")).toBe(6);
+});
